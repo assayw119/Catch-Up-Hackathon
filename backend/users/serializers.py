@@ -7,6 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Profile
         fields = ('id', 'introduction', 'coin', 'star')

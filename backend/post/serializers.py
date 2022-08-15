@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Post, Review
-
+from users.serializers import *
 
 class ReviewSerializer(serializers.ModelSerializer):
 
@@ -12,6 +12,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    writer = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
     reviews = ReviewSerializer(many=True, read_only=True)
 
     class Meta:
@@ -20,6 +21,7 @@ class PostSerializer(serializers.ModelSerializer):
 
         fields = (
             'title',
+            'writer',
             'content',
             'created_at',
             'updated_at',

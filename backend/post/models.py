@@ -11,10 +11,10 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     updated_at = models.DateTimeField(auto_now=True)
     sub_content  = models.TextField(null=True)
-    like_users = models.ManyToManyField(User, related_name='likes_user')
+    like_users = models.ManyToManyField(User, related_name='likes_user', null=True, blank=True)
     view_users = models.IntegerField(default=0)
     # chur = # 츄르 모델 참조
-    tag = models.CharField(max_length=20, null=True)
+    tag = models.CharField(max_length=20, null=True, blank=True)
 
 
     def __str__(self):
