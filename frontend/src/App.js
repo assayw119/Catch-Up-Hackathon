@@ -1,7 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import Routers from './Routes';
+import { CookiesProvider } from 'react-cookie';
 
 const GlobalStyle = createGlobalStyle`
+@import url("https://fonts.googleapis.com/earlyaccess/notosanskr.css");
 @import url('https://rsms.me/inter/inter.css');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&display=swap');
  html, body, div, span, applet, object, iframe,
@@ -23,6 +25,9 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+::-webkit-scrollbar{
+  display: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -67,8 +72,10 @@ a{
 function App() {
   return (
     <>
+    <CookiesProvider>
       <GlobalStyle />
       <Routers/>
+    </CookiesProvider>
     </>
   );
 }
